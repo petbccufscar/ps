@@ -1,4 +1,4 @@
-//Parêntesis
+//Parênteses
 #include <stdlib.h>
 #include <stdio.h>
 
