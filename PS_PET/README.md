@@ -2,13 +2,13 @@
 
 A implementação da solução deste problema, em termos de código, é relativamente simples. O grande desafio é compreender o **conceito** por trás do problema, e entender como as **convenções utilizadas** garantem uma resolução válida.
 
-Resumidamente, o enunciado nos pede um programa que verifique se os parênteses em uma expressão matématica fornecida foram empregados de maneira correta.
+Resumidamente, o enunciado nos pede um programa que verifique se os parênteses em uma expressão matemática fornecida foram empregados de maneira correta.
 
 As seguintes condições são as mais importantes para o entendimento do problema:
 
-1.  **"[...]todo parênteses que fecha deve ter um outro parênteses que abre correspondente e não pode haver parênteses que fecha sem um prévio parenteses que abre[...]"**
+1.  **"[...]todo parênteses que fecha deve ter um outro parênteses que abre correspondente e não pode haver parênteses que fecha sem um prévio parênteses que abre[...]"**
 
-2. **"[...]a quantidade total de parenteses que abre e fecha deve ser igual."**
+2. **"[...]a quantidade total de parênteses que abre e fecha deve ser igual."**
 
 De uma maneira intuitiva, nós já utilizamos essas condições para achar pares de parênteses que abrem e fecham de maneira correta. Entretanto, é necessário explicitar isso em forma de código para criarmos um algoritmo.
 ## Explicação da solução
@@ -34,13 +34,13 @@ Até então temos **aux==0**, que significa que **todos os parênteses abertos f
 
 * Encontramos 1 parênteses que fecha, decrementando aux uma vez (**aux == -1**).
 
-**O próximo parênteses seria um que abre. Porém se simplesmente incrementarmos aux, iremos obter aux==0 com um significado diferente do proposto, visto que o parênteses que fecha apareceu antes de seu par que abre, violando a condição 1 do enunciado.**
+**O próximo parênteses seria um que abre. Porém, se simplesmente incrementarmos aux, iremos obter aux==0 com um significado diferente do proposto, visto que o parênteses que fecha apareceu antes de seu par que abre, violando a condição 1 do enunciado.**
 
-Para resolver isso, **em nenhum momento, podemos prosseguir com a análise da expressão caso aux seja igual a -1**, já que é uma violação da condição que define uma expressão como válida.
+Para resolver isso, **em nenhum momento podemos prosseguir com a análise da expressão caso aux seja igual a -1**, já que é uma violação da condição que define uma expressão como válida.
 
 Assim, devemos parar com a análise e obtemos **aux==-1**, verificando que isso torna a expressão inválida.
 
-Nesse sentido, conclui-se que para que uma expressão seja válida, é necessário que **aux** seja igual a 0, sem que em nenhum momento da análise **aux** tenha sido igual a -1.
+Nesse sentido, conclui-se que para que uma expressão seja válida, é necessário que **aux** seja igual a 0, sem que, em nenhum momento da análise **aux** tenha sido igual a -1.
 
 No caso de uma outra análise que nos dê um valor de **aux > 0** no final, significa que temos  parênteses que abrem e que não foram fechados, tornando também a expressão inválida. Nessa situação, a análise pode ocorrer até o final, pois o problema descrito anteriormente **(violação da condição 1)** não ocorreria.
 
@@ -51,7 +51,7 @@ Nesse caso, o valor final de **aux** após analisar toda a expressão seria aux 
 
 ## Explicação do código
 
-No início da função **main** são definidas algumas váriáveis necessárias ao nosso programa. Dentre elas estão **entrada** (buffer de entrada de dados), **tam** (tamanho máximo do buffer de entrada). Inicialmente utiliza-se **malloc** para alocar um espaço para a entrada inicial.
+No início da função **main** são definidas algumas variáveis necessárias ao nosso programa. Dentre elas estão **entrada** (buffer de entrada de dados), **tam** (tamanho máximo do buffer de entrada). Inicialmente utiliza-se **malloc** para alocar um espaço para a entrada inicial.
 
 ```c
 char *entrada;
@@ -122,7 +122,7 @@ De maneira mais simples, é preciso determinar se a frase fornecida possui todas
 ## Explicação da solução
 Intuitivamente, a solução proposta percorre a frase da esquerda para a direita, analisando cada caractere, identificando o início de uma palavra e **comparando a primeira letra de cada palavra com a primeira letra da primeira palavra da frase.**
 
-Caso encontre qualquer palavra cuja primeira letra seja diferente da primeira letra da primeira palavra, o programa utliza uma mudança no valor de uma variável para indicar que a frase não é um tautograma, parando de percorrer a frase.
+Caso encontre qualquer palavra cuja primeira letra seja diferente da primeira letra da primeira palavra, o programa utiliza uma mudança no valor de uma variável para indicar que a frase não é um tautograma, parando de percorrer a frase.
 
 Caso a frase seja percorrida sem que o valor dessa variável mude, a frase é classificada como tautograma.
 
@@ -135,7 +135,7 @@ Antes de entrar em detalhes de código, é interessante explicar o significado a
 * **(int) frase_valida**: variável inteira usada para indicar se a frase percorrida é um tautograma ou não. O valor 1 indica que a frase é um tautograma. O valor 0 indica que não é.
 * **(char) letra_inicial**: variável que armazena a primeira letra da primeira palavra da frase e servirá de referência para comparações com outras palavras.
 
-No início da função **main** são definidas algumas váriáveis necessárias ao nosso programa. Dentre elas estão o ponteiro **entrada** (aponto para buffer de entrada de dados) que é iniciado com valor NULL, **tam** (tamanho máximo do buffer de entrada), e as variáveis **frase_valida**, **primeira_letra**, **i** (contador) e **achou_letra_inicial**.
+No início da função **main** são definidas algumas variáveis necessárias ao nosso programa. Dentre elas estão o ponteiro **entrada** (aponto para buffer de entrada de dados) que é iniciado com valor NULL, **tam** (tamanho máximo do buffer de entrada), e as variáveis **frase_valida**, **primeira_letra**, **i** (contador) e **achou_letra_inicial**.
 
 ```c
 int main(){
@@ -184,7 +184,7 @@ No início desse **for** existe uma condição que serve para verificar se o pro
 Nas linhas seguintes, há outro **if** onde serão executadas outras condições caso a primeira letra da frase tenha sido encontrada.
 
 
- Devemos lembrar que cada caractere do vetor **entrada** pode ser uma letra ou um espaço. Para descobrirmos se o caractere é de fato a primeira letra da palavra, precisamos distinguir , de alguma forma, a primeira letra da palavra, com as demais letras dessa mesma palavra.
+ Devemos lembrar que cada caractere do vetor **entrada** pode ser uma letra ou um espaço. Para descobrirmos se o caractere é de fato a primeira letra da palavra, precisamos distinguir, de alguma forma, a primeira letra da palavra, com as demais letras dessa mesma palavra.
 
 A primeira condição verifica se o próximo caractere esperado é a primeira letra de uma palavra, utilizando a variável **primeira_letra**, e se o caractere é de fato uma letra e, não um espaço.
 
@@ -203,7 +203,7 @@ Essa variável **primeira_letra** irá mudar para 1 todas as vezes que um espaç
 
 Assim, todas as vezes que **primera_letra** for igual a 0, o programa saberá que os próximos caracteres a serem analisados não serão a primeira letra de uma palavra. Com essa diferenciação, é possível determinar o que será feito em cada um dos casos.
 
-Ateriormente, no primeiro **if**, o valor da variável **primeira_letra** deve ser 1 e o caractere **entrada[i]** deve ser diferente de espaço. Caso isso seja verdadeiro, muda-se novamente o valor de **primeira_letra** para zero, indicando que os próximos caracteres não serão a **primeira letra** de uma palavra.
+Anteriormente, no primeiro **if**, o valor da variável **primeira_letra** deve ser 1 e o caractere **entrada[i]** deve ser diferente de espaço. Caso isso seja verdadeiro, muda-se novamente o valor de **primeira_letra** para zero, indicando que os próximos caracteres não serão a **primeira letra** de uma palavra.
 
 Finalmente, existe outro **if** para  verificar se essa primeira letra da palavra analisada é diferente da primeira letra da primeira palavra encontrada na frase (variável **letra_inicial**). Caso as letras sejam diferentes, a flag **frase_valida** tem seu valor alterado para zero, indicando que a frase não é um tautograma. Caso sejam iguais, o valor de **frase_valida** permanece inalterado (igual a 1).
 
