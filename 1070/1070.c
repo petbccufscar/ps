@@ -4,7 +4,6 @@ int main()
 {
    int X, i=0;
    scanf("%d", &X);
-   printf("\n");
    if (X%2 == 0){
     for(i=0; i<6; i++){
         X = X+1;
